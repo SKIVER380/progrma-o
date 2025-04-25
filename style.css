@@ -1,0 +1,12 @@
+body{
+font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: indigo;
+    color: rgb(134, 131, 129);
+    text-align: center;
+    
+}
+#timer{
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 30px;
+}
