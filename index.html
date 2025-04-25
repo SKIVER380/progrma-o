@@ -1,19 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">  <!-- Alterado para português do Brasil -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crônometro Pedro</title>
+    <title>Cronômetro Escolar</title>  <!-- Título mais descritivo -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos básicos caso o style.css não esteja disponível */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #6b12a7;
+        }
+        #timer {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #11c4d1;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-
 <body>
-    <h1>Quantos Dias Para Acabar a Escola</h1>
-    <div id="timer"> 00d 00h 00m 00s </div>
+    <header>
+        <h1>Contagem Regressiva para o Fim do Ano Letivo</h1>  <!-- Título mais claro -->
+    </header>
+    
+    <main>
+        <div id="timer" aria-live="polite">00d 00h 00m 00s</div>  <!-- Adicionado aria-live para acessibilidade -->
+    </main>
 
-    <script src="script.js"></script>
+    <script>
+        // Aqui viria o código JavaScript corrigido que forneci anteriormente
+        let intervalo;
 
+        function IniciarCronometro() {
+            clearInterval(intervalo);
+            const dataFutura = new Date("2025-12-19T23:59:59");
+            
+            intervalo = setInterval(() => {
+                const agora = new Date();
+                const diferenca = dataFutura - agora;
+                
+                const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+                const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+                
+                document.getElementById('timer').textContent = 
+                    `${dias.toString().padStart(2, '0')}d ${horas.toString().padStart(2, '0')}h ${minutos.toString().padStart(2, '0')}m ${segundos.toString().padStart(2, '0')}s`;
+            }, 1000);
+        }
+
+        IniciarCronometro();
+    </script>
 </body>
-
 </html>
